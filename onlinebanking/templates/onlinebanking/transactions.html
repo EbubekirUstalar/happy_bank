@@ -1,0 +1,35 @@
+{% extends "onlinebanking/base.html" %}
+{% load i18n %}
+
+{% block content %}
+    {% for transaction in transactions %}
+        {% if transaction.value > 0 %}
+            <div class="alert alert-primary" role="alert">
+                <div class="table_item">From; {{ transaction.account.owner.given_name }} {{ transaction.account.owner.family_name }}</div>
+                <div class="table_item">To: {{ transaction.remote.owner.given_name }} {{ transaction.remote.owner.family_name }}</div>
+                <div class="table_item">{{ transaction.remote.owner.get_fullname_initials }}</div>
+                <div class="table_item">{{ transaction.created }}</div>
+                <div class="table_item">{{ transaction.value }}</div>
+            </div>
+        {% endif %}
+    {% endfor %}
+
+    {% comment %} https://docs.djangoproject.com/en/4.0/topics/pagination/ {% endcomment %}
+    <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+            {% endif %}
+
+            <span class="current">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            </span>
+
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">next</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+{% endblock %}

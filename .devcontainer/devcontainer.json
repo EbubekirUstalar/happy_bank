@@ -1,0 +1,154 @@
+{
+	// name of the devcontainer
+	"name": "django-testcase",
+	// define the docker compose file to use for the devcontainer
+	"dockerComposeFile": [
+		"../docker-compose.yaml",
+		"./docker-compose.yaml",
+	],
+	// define which services from the compose file to start and stop
+	"runServices": ["django", "db"],
+	// define the docker-compose service to use for the dev container
+	"service": "django",
+	// define the workspace folder our app is located in
+	"workspaceFolder": "/app",
+	// set the remote user to connect as
+	"remoteUser": "app",
+	// configure vscode
+	"settings": {
+		// define a terminal profile
+		"terminal.integrated.profiles.linux": {
+			"bash": {
+				"path": "/bin/bash",
+			},
+		},
+		// set defined terminal profile active
+		"terminal.integrated.defaultProfile.linux": "bash",
+		// language specific editor settings
+		"[python]": {
+			"editor.rulers": [
+				88
+			],
+		},
+		// don't activate the virtual environment every time as we're using the env binary
+		"python.terminal.activateEnvironment": false,
+		"python.terminal.activateEnvInCurrentTerminal": true,
+		// define formatter
+		"python.formatting.provider": "black",
+		"python.formatting.blackArgs": [
+			"--line-length",
+			"88",
+		],
+		// format files on save
+		"editor.formatOnSave": true,
+		// python environment
+		"python.defaultInterpreterPath": "/home/app/venv/bin/python",
+		// used for autocomplete etc
+		"python.languageServer": "Pylance",
+		// do all the linting
+		"python.linting.enabled": true,
+		"python.linting.pylintPath": "/home/app/venv/bin/pylint",
+		"python.linting.pylintEnabled": true,
+		"python.linting.flake8Enabled": true,
+		"python.linting.mypyEnabled": true,
+		"python.linting.pylintArgs": [
+			"--load-plugins",
+			"pylint_django"
+		],
+		// file formatting options
+		"files.trimTrailingWhitespace": true,
+		"files.insertFinalNewline": true,
+		"files.associations": {
+			"**/*.html": "html",
+			"**/templates/*/*.html": "django-html",
+			"**/templates/*": "django-txt",
+			"**/requirements{/**,*}.{txt}": "pip-requirements",
+		},
+		"emmet.includeLanguages": {
+			"django-html": "html",
+		},
+		"beautify.language": {
+			"html": [
+				"htm",
+				"html",
+				"django-html",
+			],
+		},
+		"[django-html]": {
+			"editor.defaultFormatter": "HookyQR.beautify",
+		},
+		// files to exclude from all checks
+		"files.exclude": {
+			"**/*.pyc": true,
+			"**/.git": false,
+			"**/migrations/*": false,
+		},
+		"python.analysis.extraPaths": [
+			"../home/app/venv/lib/python3.8/site-packages/",
+		],
+		"python.analysis.useImportHeuristic": true,
+		"python.analysis.autoSearchPaths": true,
+		// gitlens settings
+		"gitlens.codeLens.enabled": false,
+	},
+	// list all extensions that should be installed when the container is created
+	"extensions": [
+		// ---------------------------------------
+		// PYTHON
+		// ---------------------------------------
+		// Python extension for Visual Studio Code
+		// https://marketplace.visualstudio.com/items?itemName=ms-python.python
+		"ms-python.python",
+		// Pylance - A performant, feature-rich language server for Python in VS Code
+		// https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance
+		"ms-python.vscode-pylance",
+		// Proper indentation for Python
+		// https://marketplace.visualstudio.com/items?itemName=KevinRose.vsc-python-indent
+		"KevinRose.vsc-python-indent",
+		// Visually highlight indentation depth
+		// https://marketplace.visualstudio.com/items?itemName=oderwat.indent-rainbow
+		"oderwat.indent-rainbow",
+		// Code comment highlights
+		// https://marketplace.visualstudio.com/items?itemName=aaron-bond.better-comments
+		"aaron-bond.better-comments",
+		// ---------------------------------------
+		// GIT
+		// ---------------------------------------
+		// View git log, file history, compare branches or commits
+		// https://marketplace.visualstudio.com/items?itemName=donjayamanne.githistory
+		"donjayamanne.githistory",
+		// Supercharge the Git capabilities built into Visual Studio Code
+		// https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens
+		"eamodio.gitlens",
+		// GitLab Workflow
+		// https://marketplace.visualstudio.com/items?itemName=GitLab.gitlab-workflow
+		"GitLab.gitlab-workflow",
+		// ---------------------------------------
+		// FILE TYPE SUPPORT
+		// ---------------------------------------
+		// Support for dotenv file syntax
+		// https://marketplace.visualstudio.com/items?itemName=mikestead.dotenv
+		"mikestead.dotenv",
+		// Syntax highlighting for .po files
+		// https://marketplace.visualstudio.com/items?itemName=mrorz.language-gettext
+		"mrorz.language-gettext",
+		// Duplicate translation error marking for .po files
+		// https://marketplace.visualstudio.com/items?itemName=ovcharik.gettext-duplicate-error
+		"ovcharik.gettext-duplicate-error",
+		// Beautify code in place for VS Code
+		// https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify
+		"HookyQR.beautify",
+		// YAML language support
+		// https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml
+		"redhat.vscode-yaml",
+		// TOML language support
+		// https://marketplace.visualstudio.com/items?itemName=bungcip.better-toml
+		"bungcip.better-toml",
+		// ---------------------------------------
+		// DJANGO
+		// ---------------------------------------
+		// Django template support
+		// https://marketplace.visualstudio.com/items?itemName=batisteo.vscode-django
+		"batisteo.vscode-django",
+	],
+}

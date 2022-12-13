@@ -1,0 +1,8 @@
+.idea/
+__pycache__/
+.pyc
+.ipython/
+.bash_history
+happy_bank/
+venv/
+db.sqlite3

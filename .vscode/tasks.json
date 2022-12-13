@@ -1,0 +1,94 @@
+{
+    "version": "2.0.0",
+    "problemMatcher": [],
+    "presentation": {
+        "reveal": "always",
+        "panel": "new"
+    },
+    "type": "shell",
+    "tasks": [
+        {
+            "label": "Build",
+            "dependsOn": [
+                "Run application"
+            ],
+            // mark as the default build task (cmd/ctrl+shift+b)
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            // try start the task on folder open
+            "runOptions": {
+                "runOn": "folderOpen"
+            }
+        },
+        {
+            "label": "Test",
+            "dependsOn": [
+                "Django: Run tests"
+            ],
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "Run application",
+            "command": "${config:python.defaultInterpreterPath}",
+            "args": [
+                "manage.py",
+                "runserver_plus",
+                "--nopin",
+                "0:8357"
+            ],
+            "group": "none"
+        },
+        {
+            "label": "Django: Shell",
+            "command": "${config:python.defaultInterpreterPath}",
+            "args": [
+                "manage.py",
+                "shell_plus"
+            ],
+            "group": "none"
+        },
+        {
+            "label": "Django: Make migrations",
+            "command": "${config:python.defaultInterpreterPath}",
+            "args": [
+                "manage.py",
+                "makemigrations"
+            ],
+            "group": "none"
+        },
+        {
+            "label": "Django: Migrate",
+            "command": "${config:python.defaultInterpreterPath}",
+            "args": [
+                "manage.py",
+                "migrate"
+            ],
+            "group": "none"
+        },
+        {
+            "label": "Django: Initialize database with test data",
+            "command": "${config:python.defaultInterpreterPath}",
+            "args": [
+                "manage.py",
+                "initialize_data"
+            ],
+            "group": "none"
+        },
+        {
+            "label": "Django: Run tests",
+            "command": "${config:python.defaultInterpreterPath}",
+            "args": [
+                "manage.py",
+                "test",
+                "--no-input",
+                "--parallel=2"
+            ],
+            "group": "test"
+        }
+    ]
+}
