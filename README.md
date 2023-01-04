@@ -7,8 +7,8 @@ To make sure nothing goes wrong, we need your help.
 
 ## Initial Project setup
     git clone 'project_path'
-    python -m venv happy_bank
-    source happy_bank/bin/activate
+    python -m venv happy_bank_venv
+    source happy_bank_venv/bin/activate
     pip install -r requirements.txt
     python manage.py runserver
 

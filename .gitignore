@@ -3,6 +3,6 @@ __pycache__/
 .pyc
 .ipython/
 .bash_history
-happy_bank/
+happy_bank_venv/
 venv/
 db.sqlite3
