@@ -1,7 +1,7 @@
 # Scenario
 
 HappyBank is the most customer friendly and secure banking provider in the world.
-To make sure nothing goes wrong, we need your help.
+To make sure nothing goes wrong, we need your help
 
 # How to get this up and running
 
